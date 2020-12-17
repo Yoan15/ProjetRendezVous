@@ -36,6 +36,11 @@ class Praticien
      */
     private $adresse;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Specialite::class, inversedBy="praticiens")
+     */
+    private $specialite;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -73,6 +78,18 @@ class Praticien
     public function setAdresse(string $adresse): self
     {
         $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    public function getSpecialite(): ?Specialite
+    {
+        return $this->specialite;
+    }
+
+    public function setSpecialite(?Specialite $specialite): self
+    {
+        $this->specialite = $specialite;
 
         return $this;
     }

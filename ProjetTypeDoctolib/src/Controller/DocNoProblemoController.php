@@ -9,12 +9,12 @@ use Symfony\Component\Routing\Annotation\Route;
 class DocNoProblemoController extends AbstractController
 {
     /**
-     * @Route("/", name="doctolib_index")
+     * @Route("/", name="docNoProblemo_index")
      */
     public function index(): Response
     {
         return $this->render('docNoProblemo/index.html.twig', [
-            'controller_name' => 'DoctolibController',
+            'controller_name' => 'DocNoProblemoController',
         ]);
     }
 }

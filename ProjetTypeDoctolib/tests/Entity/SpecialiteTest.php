@@ -2,6 +2,7 @@
 
 namespace App\Tests\Entity;
 
+use App\Entity\Praticien;
 use App\Entity\Specialite;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
@@ -34,5 +35,27 @@ class SpecialiteTest extends KernelTestCase{
         $errors = $this->validator->validate($specialite);
         $this->assertCount(1, $errors);
         // $this->assertEquals("La spécialité est obligatoire.", $errors[0]->getMessage(), "Echec sur le test : 'testNotValidBlankSpecialite'.");
+    }
+
+    public function testGetEmptyPraticiens(){
+        $specialite = $this->getSpecialite("Chirurgie");
+        $this->assertCount(0, $specialite->getPraticiens());
+    }
+
+    public function testGetNotEmptyPraticiens(){
+        $specialite = $this->getSpecialite("Chirurgie");
+        $praticien = (new Praticien())->setNom("Fernand")->setPrenom("Marcel")->setAdresse("10 Rue de La Maroquinerie");
+        $specialite->addPraticien($praticien);
+        $this->assertCount(1, $specialite->getPraticiens());
+        $this->assertEquals($specialite, $praticien->getSpecialite());
+    }
+
+    public function testRemovePraticien(){
+        $specialite = $this->getSpecialite("Chirurgie");
+        $praticien = (new Praticien())->setNom("Fernand")->setPrenom("Marcel")->setAdresse("10 Rue de La Maroquinerie");
+        $specialite->addPraticien($praticien);
+        $this->assertCount(1, $specialite->getPraticiens());
+        $specialite->removePraticien($praticien);
+        $this->assertEquals(null, $praticien->getSpecialite());
     }
 }
