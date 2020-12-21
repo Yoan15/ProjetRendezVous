@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PraticienRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -40,6 +42,22 @@ class Praticien
      * @ORM\ManyToOne(targetEntity=Specialite::class, inversedBy="praticiens")
      */
     private $specialite;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Patient::class, mappedBy="praticien")
+     */
+    private $patients;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Rdv::class, mappedBy="praticien")
+     */
+    private $rdvs;
+
+    public function __construct()
+    {
+        $this->patients = new ArrayCollection();
+        $this->rdvs = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -90,6 +108,66 @@ class Praticien
     public function setSpecialite(?Specialite $specialite): self
     {
         $this->specialite = $specialite;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Patient[]
+     */
+    public function getPatients(): Collection
+    {
+        return $this->patients;
+    }
+
+    public function addPatient(Patient $patient): self
+    {
+        if (!$this->patients->contains($patient)) {
+            $this->patients[] = $patient;
+            $patient->setPraticien($this);
+        }
+
+        return $this;
+    }
+
+    public function removePatient(Patient $patient): self
+    {
+        if ($this->patients->removeElement($patient)) {
+            // set the owning side to null (unless already changed)
+            if ($patient->getPraticien() === $this) {
+                $patient->setPraticien(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Rdv[]
+     */
+    public function getRdvs(): Collection
+    {
+        return $this->rdvs;
+    }
+
+    public function addRdv(Rdv $rdv): self
+    {
+        if (!$this->rdvs->contains($rdv)) {
+            $this->rdvs[] = $rdv;
+            $rdv->setPraticien($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRdv(Rdv $rdv): self
+    {
+        if ($this->rdvs->removeElement($rdv)) {
+            // set the owning side to null (unless already changed)
+            if ($rdv->getPraticien() === $this) {
+                $rdv->setPraticien(null);
+            }
+        }
 
         return $this;
     }

@@ -3,6 +3,7 @@
 namespace App\Tests\Entity;
 
 use App\Entity\Patient;
+use App\Entity\Praticien;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 class PatientTest extends KernelTestCase{
