@@ -13,7 +13,7 @@ class PatientFixture extends Fixture
         // $product = new Product();
         // $manager->persist($product);
         for ($i = 1; $i <= 5; $i++){
-            $praticien = (new Patient())->setNom("Dupond $i")->setPrenom("Jean $i")->setNumSecuSociale(184571478298572);
+            $praticien = (new Patient())->setNom("Dupond $i")->setPrenom("Jean $i")->setNumSecuSociale(184571478298572)->setEmail("DupondJean$i@gmail.com")->setPassword("kongo");
             $manager->persist($praticien);
         }
 

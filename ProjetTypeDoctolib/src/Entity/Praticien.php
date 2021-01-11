@@ -11,14 +11,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass=PraticienRepository::class)
  */
-class Praticien
+class Praticien extends User
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
 
     /**
      * @ORM\Column(type="string", length=50)
@@ -57,11 +51,6 @@ class Praticien
     {
         $this->patients = new ArrayCollection();
         $this->rdvs = new ArrayCollection();
-    }
-
-    public function getId(): ?int
-    {
-        return $this->id;
     }
 
     public function getNom(): ?string

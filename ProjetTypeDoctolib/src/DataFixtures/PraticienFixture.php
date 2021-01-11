@@ -14,7 +14,7 @@ class PraticienFixture extends Fixture
         // $product = new Product();
         // $manager->persist($product);
         for ($i = 1; $i <= 5; $i++){
-            $praticien = (new Praticien())->setNom("Fernand $i")->setPrenom("Marcel $i")->setAdresse("10 Rue De La Maroquinnerie");
+            $praticien = (new Praticien())->setNom("Fernand $i")->setPrenom("Marcel $i")->setAdresse("10 Rue De La Maroquinnerie")->setEmail("DupondJean$i@gmail.com")->setPassword("kongo");
             $manager->persist($praticien);
         }
         $manager->flush();
