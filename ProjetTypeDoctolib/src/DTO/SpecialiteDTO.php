@@ -2,8 +2,21 @@
 
     namespace App\DTO;
 
+/**
+* @OA\Schema()
+*/
     class SpecialiteDTO{
+        /**
+        * @OA\Property(type="integer")
+        *
+        * @var int
+        */
         private $id;
+        /**
+        * @OA\Property(type="string")
+        *
+        * @var string
+        */
         private $nom_specialite;
 
 

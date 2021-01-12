@@ -2,14 +2,52 @@
 
 namespace App\DTO;
 
+/**
+ * @OA\Schema()
+ */
 class PraticienDTO{
+    /**
+     * @OA\Property(type="integer")
+     *
+     * @var int
+     */
     private $id;
+    /**
+     * @OA\Property(type="string")
+     *
+     * @var string
+     */
     private $nom;
+    /**
+     * @OA\Property(type="string")
+     *
+     * @var string
+     */
     private $prenom;
+    /**
+     * @OA\Property(type="string")
+     *
+     * @var string
+     */
     private $adresse;
+    /**
+     * @OA\Property(type="integer")
+     *
+     * @var int
+     */
     private $specialite;
+    /**
+     * @OA\Property(type="string")
+     *
+     * @var string
+     */
     private $email;
     private $role;
+    /**
+     * @OA\Property(type="string")
+     *
+     * @var string
+     */
     private $password;
 
     /**

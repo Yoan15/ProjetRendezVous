@@ -2,14 +2,52 @@
 
 namespace App\DTO;
 
+/**
+ * @OA\Schema()
+ */
 class PatientDTO{
+    /**
+     * @OA\Property(type="integer")
+     *
+     * @var int
+     */
     private $id;
+    /**
+     * @OA\Property(type="string")
+     *
+     * @var string
+     */
     private $nom;
+    /**
+     * @OA\Property(type="string")
+     *
+     * @var string
+     */
     private $prenom;
+    /**
+     * @OA\Property(type="integer")
+     *
+     * @var int
+     */
     private $num_secu_sociale;
+    /**
+     * @OA\Property(type="integer")
+     *
+     * @var int
+     */
     private $praticien;
+    /**
+     * @OA\Property(type="string")
+     *
+     * @var string
+     */
     private $email;
     private $role;
+    /**
+     * @OA\Property(type="string")
+     *
+     * @var string
+     */
     private $password;
 
     /**

@@ -1,0 +1,461 @@
+openapi: 3.0.0
+info:
+  title: 'DocNoProblemo Management'
+  version: 1.0.0
+paths:
+  /patients:
+    get:
+      tags:
+        - Patient
+      summary: 'Returns a list of PatientDTO'
+      description: 'Returns a list of PatientDTO'
+      operationId: 'App\Controller\PatientRestController::searchAll'
+      responses:
+        '200':
+          description: 'Successful operation'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PatientDTO'
+        '404':
+          description: 'If no PatientDTO found'
+        '500':
+          description: 'Internal server Error. Please contact us'
+    post:
+      tags:
+        - Patient
+      summary: 'Creates a patient'
+      description: 'Creates a patient'
+      operationId: 'App\Controller\PatientRestController::create'
+      responses:
+        '201':
+          description: 'Patient created'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PatientDTO'
+        '500':
+          description: 'Internal server Error. Please contact us'
+  '/patient/{patientId}':
+    get:
+      tags:
+        - Patient
+      summary: 'Find patient by ID'
+      description: 'Returns a single patient'
+      operationId: getPatientById
+      parameters:
+        -
+          name: patientId
+          in: path
+          description: 'ID of patient to return'
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: 'successful operation'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PatientDTO'
+        '404':
+          description: 'Patient not found'
+        '500':
+          description: 'Internal server error, please contact us.'
+    put:
+      tags:
+        - Patient
+      summary: 'Update a patient'
+      description: 'Updates a single patient'
+      operationId: updatePatient
+      parameters:
+        -
+          name: patientId
+          in: path
+          description: 'Patient id to update'
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: 'Patient updated'
+        '500':
+          description: 'Internal server error, please contact us.'
+    delete:
+      tags:
+        - Patient
+      summary: 'Deletes a patient'
+      description: 'Deletes a single patient'
+      operationId: deletePatient
+      parameters:
+        -
+          name: patientId
+          in: path
+          description: 'Patient id to delete'
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: 'Patient not found'
+        '500':
+          description: 'Internal server error, please contact us.'
+  /praticiens:
+    get:
+      tags:
+        - Praticien
+      summary: 'Returns a list of PraticienDTO'
+      description: 'Returns a list of PraticienDTO'
+      operationId: 'App\Controller\PraticienRestController::searchAll'
+      responses:
+        '200':
+          description: 'Successful operation'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PraticienDTO'
+        '404':
+          description: 'If no PraticienDTO found'
+        '500':
+          description: 'Internal server Error. Please contact us'
+    post:
+      tags:
+        - Praticien
+      summary: 'Creates a praticien'
+      description: 'Creates a praticien'
+      operationId: 'App\Controller\PraticienRestController::create'
+      responses:
+        '201':
+          description: 'Praticien created'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PraticienDTO'
+        '500':
+          description: 'Internal server Error. Please contact us'
+  '/praticien/{praticienId}':
+    get:
+      tags:
+        - Praticien
+      summary: 'Find praticien by ID'
+      description: 'Returns a single praticien'
+      operationId: getPraticienById
+      parameters:
+        -
+          name: praticienId
+          in: path
+          description: 'ID of praticien to return'
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: 'successful operation'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PraticienDTO'
+        '404':
+          description: 'Praticien not found'
+        '500':
+          description: 'Internal server error, please contact us.'
+    put:
+      tags:
+        - Praticien
+      summary: 'Update a praticien'
+      description: 'Updates a single praticien'
+      operationId: updatePraticien
+      parameters:
+        -
+          name: praticienId
+          in: path
+          description: 'Praticien id to update'
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: 'Praticien updated'
+        '500':
+          description: 'Internal server error, please contact us.'
+    delete:
+      tags:
+        - Praticien
+      summary: 'Deletes a praticien'
+      description: 'Deletes a single praticien'
+      operationId: deletePraticien
+      parameters:
+        -
+          name: praticienId
+          in: path
+          description: 'Praticien id to delete'
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: 'Praticien not found'
+        '500':
+          description: 'Internal server error, please contact us.'
+  /rdvs:
+    get:
+      tags:
+        - Rdv
+      summary: 'Returns a list of RdvDTO'
+      description: 'Returns a list of RdvDTO'
+      operationId: 'App\Controller\RdvRestController::searchAll'
+      responses:
+        '200':
+          description: 'Successful operation'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RdvDTO'
+        '404':
+          description: 'If no RdvDTO found'
+        '500':
+          description: 'Internal server Error. Please contact us'
+    post:
+      tags:
+        - Rdv
+      summary: 'Creates a rdv'
+      description: 'Creates a rdv'
+      operationId: 'App\Controller\RdvRestController::create'
+      responses:
+        '201':
+          description: 'Rdv created'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RdvDTO'
+        '500':
+          description: 'Internal server Error. Please contact us'
+  '/rdvs/{rdvId}':
+    get:
+      tags:
+        - Rdv
+      summary: 'Find rdv by ID'
+      description: 'Returns a single rdv'
+      operationId: getRdvById
+      parameters:
+        -
+          name: rdvId
+          in: path
+          description: 'ID of rdv to return'
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: 'successful operation'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RdvDTO'
+        '404':
+          description: 'Rdv not found'
+        '500':
+          description: 'Internal server error, please contact us.'
+    put:
+      tags:
+        - Rdv
+      summary: 'Update a rdv'
+      description: 'Updates a single rdv'
+      operationId: updateRdv
+      parameters:
+        -
+          name: rdvId
+          in: path
+          description: 'Rdv id to update'
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: 'Rdv updated'
+        '500':
+          description: 'Internal server error, please contact us.'
+    delete:
+      tags:
+        - Rdv
+      summary: 'Deletes a rdv'
+      description: 'Deletes a single rdv'
+      operationId: deleteRdv
+      parameters:
+        -
+          name: rdvId
+          in: path
+          description: 'Rdv id to delete'
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: 'Rdv not found'
+        '500':
+          description: 'Internal server error, please contact us.'
+  /specialites:
+    get:
+      tags:
+        - Spécialité
+      summary: 'Returns a list of SpecialiteDTO'
+      description: 'Returns a list of SpecialiteDTO'
+      operationId: 'App\Controller\SpecialiteRestController::searchAll'
+      responses:
+        '200':
+          description: 'Successful operation'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SpecialiteDTO'
+        '404':
+          description: 'If no SpecialiteDTO found'
+        '500':
+          description: 'Internal server Error. Please contact us'
+    post:
+      tags:
+        - Spécialité
+      summary: 'Creates a spécialité'
+      description: 'Creates a spécialité'
+      operationId: 'App\Controller\SpecialiteRestController::create'
+      responses:
+        '201':
+          description: 'Spécialité created'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SpecialiteDTO'
+        '500':
+          description: 'Internal server Error. Please contact us'
+  '/specialite/{specialiteId}':
+    get:
+      tags:
+        - Spécialité
+      summary: 'Find spécialité by ID'
+      description: 'Returns a single spécialité'
+      operationId: getSpecialiteById
+      parameters:
+        -
+          name: specialiteId
+          in: path
+          description: 'ID of spécialité to return'
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: 'successful operation'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SpecialiteDTO'
+        '404':
+          description: 'Spécialité not found'
+        '500':
+          description: 'Internal server error, please contact us.'
+    put:
+      tags:
+        - Spécialité
+      summary: 'Update a spécialité'
+      description: 'Updates a single spécialité'
+      operationId: updateSpecialite
+      parameters:
+        -
+          name: specialiteId
+          in: path
+          description: 'Spécialité id to update'
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: 'Spécialité updated'
+        '500':
+          description: 'Internal server error, please contact us.'
+    delete:
+      tags:
+        - Spécialité
+      summary: 'Deletes a specialite'
+      description: 'Deletes a single specialite'
+      operationId: deleteSpecialite
+      parameters:
+        -
+          name: specialiteId
+          in: path
+          description: 'Spécialité id to delete'
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: 'Spécialité not found'
+        '500':
+          description: 'Internal server error, please contact us.'
+components:
+  schemas:
+    PatientDTO:
+      properties:
+        id:
+          type: integer
+        nom:
+          type: string
+        prenom:
+          type: string
+        num_secu_sociale:
+          type: integer
+        praticien:
+          type: integer
+        email:
+          type: string
+        password:
+          type: string
+      type: object
+    PraticienDTO:
+      properties:
+        id:
+          type: integer
+        nom:
+          type: string
+        prenom:
+          type: string
+        adresse:
+          type: string
+        specialite:
+          type: integer
+        email:
+          type: string
+        password:
+          type: string
+      type: object
+    RdvDTO:
+      properties:
+        id:
+          type: integer
+        date:
+          type: string
+        heure:
+          type: string
+        patient:
+          type: integer
+        praticien:
+          type: integer
+      type: object
+    SpecialiteDTO:
+      properties:
+        id:
+          type: integer
+        nom_specialite:
+          type: string
+      type: object

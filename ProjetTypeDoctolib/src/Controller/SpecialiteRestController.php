@@ -34,6 +34,26 @@ class SpecialiteRestController extends AbstractFOSRestController
     }
 
     /**
+     * @OA\Get(
+     *     path="/specialites",
+     *     tags={"Spécialité"},
+     *     summary="Returns a list of SpecialiteDTO",
+     *     description="Returns a list of SpecialiteDTO",
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation", 
+     *         @OA\JsonContent(ref="#/components/schemas/SpecialiteDTO")   
+     *     ),
+     *      @OA\Response(
+     *         response=404,
+     *         description="If no SpecialiteDTO found",    
+     *     ),
+     *      @OA\Response(
+     *         response=500,
+     *         description="Internal server Error. Please contact us",    
+     *     )
+     * )
+     * 
      * @Get(SpecialiteRestController::URI_SPECIALITE_COLLECTION)
      */
     public function searchAll()
@@ -51,6 +71,32 @@ class SpecialiteRestController extends AbstractFOSRestController
     }
 
     /**
+     * @OA\Delete(
+     *     path="/specialite/{specialiteId}",
+     *     tags={"Spécialité"},
+     *     summary="Deletes a specialite",
+     *     description="Deletes a single specialite",
+     *     operationId="deleteSpecialite",
+     *     @OA\Parameter(
+     *         name="specialiteId",
+     *         in="path",
+     *         description="Spécialité id to delete",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="integer",
+     *             format="int64"
+     *         ),
+     *     ),
+     *     @OA\Response(
+     *         response=204,
+     *         description="Spécialité not found",
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Internal server error, please contact us.",
+     *     )
+     * )
+     * 
      * @Delete(SpecialiteRestController::URI_SPECIALITE_INSTANCE)
      * @param [type] $id
      * @return void
@@ -66,6 +112,22 @@ class SpecialiteRestController extends AbstractFOSRestController
     }
 
     /**
+     * @OA\Post(
+     *     path="/specialites",
+     *     tags={"Spécialité"},
+     *     summary="Creates a spécialité",
+     *     description="Creates a spécialité",
+     *     @OA\Response(
+     *         response=201,
+     *         description="Spécialité created", 
+     *         @OA\JsonContent(ref="#/components/schemas/SpecialiteDTO")   
+     *     ),
+     *      @OA\Response(
+     *         response=500,
+     *         description="Internal server Error. Please contact us",    
+     *     )
+     * )
+     * 
      * @Post(SpecialiteRestController::URI_SPECIALITE_COLLECTION)
      * @ParamConverter("specialiteDto", converter="fos_rest.request_body")
      * @return void
@@ -81,6 +143,32 @@ class SpecialiteRestController extends AbstractFOSRestController
     }
 
     /**
+     * @OA\Put(
+     *     path="/specialite/{specialiteId}",
+     *     tags={"Spécialité"},
+     *     summary="Update a spécialité",
+     *     description="Updates a single spécialité",
+     *     operationId="updateSpecialite",
+     *     @OA\Parameter(
+     *         name="specialiteId",
+     *         in="path",
+     *         description="Spécialité id to update",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="integer",
+     *             format="int64"
+     *         ),
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Spécialité updated"
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Internal server error, please contact us."
+     *     )
+     * )
+     * 
      * @Put(SpecialiteRestController::URI_SPECIALITE_INSTANCE)
      * @ParamConverter("specialiteDto", converter="fos_rest.request_body")
      * @param SpecialiteDTO $specialiteDto
@@ -97,6 +185,37 @@ class SpecialiteRestController extends AbstractFOSRestController
     }
 
     /**
+     * @OA\Get(
+     *     path="/specialite/{specialiteId}",
+     *     tags={"Spécialité"},
+     *     summary="Find spécialité by ID",
+     *     description="Returns a single spécialité",
+     *     operationId="getSpecialiteById",
+     *     @OA\Parameter(
+     *         name="specialiteId",
+     *         in="path",
+     *         description="ID of spécialité to return",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="integer",
+     *             format="int64"
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="successful operation",
+     *         @OA\JsonContent(ref="#/components/schemas/SpecialiteDTO"),
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Spécialité not found"
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Internal server error, please contact us."
+     *     ),
+     * )
+     * 
      * @Get(SpecialiteRestController::URI_SPECIALITE_INSTANCE)
      */
     public function searchById(int $id)

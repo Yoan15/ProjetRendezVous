@@ -2,11 +2,39 @@
 
 namespace App\DTO;
 
+/**
+* @OA\Schema()
+*/
 class RdvDTO{
+    /**
+    * @OA\Property(type="integer")
+    *
+    * @var int
+    */
     private $id;
+    /**
+    * @OA\Property(type="string")
+    *
+    * @var date
+    */
     private $date;
+    /**
+    * @OA\Property(type="string")
+    *
+    * @var time
+    */
     private $heure;
+    /**
+    * @OA\Property(type="integer")
+    *
+    * @var int
+    */
     private $patient;
+    /**
+    * @OA\Property(type="integer")
+    *
+    * @var int
+    */
     private $praticien;
     
 

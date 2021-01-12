@@ -34,6 +34,26 @@ class PraticienRestController extends AbstractFOSRestController
     }
 
     /**
+     * @OA\Get(
+     *     path="/praticiens",
+     *     tags={"Praticien"},
+     *     summary="Returns a list of PraticienDTO",
+     *     description="Returns a list of PraticienDTO",
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation", 
+     *         @OA\JsonContent(ref="#/components/schemas/PraticienDTO")   
+     *     ),
+     *      @OA\Response(
+     *         response=404,
+     *         description="If no PraticienDTO found",    
+     *     ),
+     *      @OA\Response(
+     *         response=500,
+     *         description="Internal server Error. Please contact us",    
+     *     )
+     * )
+     * 
      * @Get(PraticienRestController::URI_PRATICIEN_COLLECTION)
      */
     public function searchAll()
@@ -51,6 +71,32 @@ class PraticienRestController extends AbstractFOSRestController
     }
 
     /**
+     * @OA\Delete(
+     *     path="/praticien/{praticienId}",
+     *     tags={"Praticien"},
+     *     summary="Deletes a praticien",
+     *     description="Deletes a single praticien",
+     *     operationId="deletePraticien",
+     *     @OA\Parameter(
+     *         name="praticienId",
+     *         in="path",
+     *         description="Praticien id to delete",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="integer",
+     *             format="int64"
+     *         ),
+     *     ),
+     *     @OA\Response(
+     *         response=204,
+     *         description="Praticien not found",
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Internal server error, please contact us.",
+     *     )
+     * )
+     * 
      * @Delete(PraticienRestController::URI_PRATICIEN_INSTANCE)
      * @param [type] $id
      * @return void
@@ -65,6 +111,22 @@ class PraticienRestController extends AbstractFOSRestController
     }
 
     /**
+     * @OA\Post(
+     *     path="/praticiens",
+     *     tags={"Praticien"},
+     *     summary="Creates a praticien",
+     *     description="Creates a praticien",
+     *     @OA\Response(
+     *         response=201,
+     *         description="Praticien created", 
+     *         @OA\JsonContent(ref="#/components/schemas/PraticienDTO")   
+     *     ),
+     *      @OA\Response(
+     *         response=500,
+     *         description="Internal server Error. Please contact us",    
+     *     )
+     * )
+     * 
      * @Post(PraticienRestController::URI_PRATICIEN_COLLECTION)
      * @ParamConverter("praticienDto", converter="fos_rest.request_body")
      * @return void
@@ -79,6 +141,32 @@ class PraticienRestController extends AbstractFOSRestController
     }
 
     /**
+     * @OA\Put(
+     *     path="/praticien/{praticienId}",
+     *     tags={"Praticien"},
+     *     summary="Update a praticien",
+     *     description="Updates a single praticien",
+     *     operationId="updatePraticien",
+     *     @OA\Parameter(
+     *         name="praticienId",
+     *         in="path",
+     *         description="Praticien id to update",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="integer",
+     *             format="int64"
+     *         ),
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Praticien updated"
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Internal server error, please contact us."
+     *     )
+     * )
+     * 
      * @Put(PraticienRestController::URI_PRATICIEN_INSTANCE)
      * @ParamConverter("praticienDto", converter="fos_rest.request_body")
      * @param PraticienDTO $praticienDto
@@ -94,6 +182,37 @@ class PraticienRestController extends AbstractFOSRestController
     }
 
     /**
+     * @OA\Get(
+     *     path="/praticien/{praticienId}",
+     *     tags={"Praticien"},
+     *     summary="Find praticien by ID",
+     *     description="Returns a single praticien",
+     *     operationId="getPraticienById",
+     *     @OA\Parameter(
+     *         name="praticienId",
+     *         in="path",
+     *         description="ID of praticien to return",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="integer",
+     *             format="int64"
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="successful operation",
+     *         @OA\JsonContent(ref="#/components/schemas/PraticienDTO"),
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Praticien not found"
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Internal server error, please contact us."
+     *     ),
+     * )
+     * 
      * @Get(PraticienRestController::URI_PRATICIEN_INSTANCE)
      * @return void
      */

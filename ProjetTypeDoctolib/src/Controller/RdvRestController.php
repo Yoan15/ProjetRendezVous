@@ -35,6 +35,27 @@ class RdvRestController extends AbstractFOSRestController
     }
 
     /**
+     * /**
+     * @OA\Get(
+     *     path="/rdvs",
+     *     tags={"Rdv"},
+     *     summary="Returns a list of RdvDTO",
+     *     description="Returns a list of RdvDTO",
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation", 
+     *         @OA\JsonContent(ref="#/components/schemas/RdvDTO")   
+     *     ),
+     *      @OA\Response(
+     *         response=404,
+     *         description="If no RdvDTO found",    
+     *     ),
+     *      @OA\Response(
+     *         response=500,
+     *         description="Internal server Error. Please contact us",    
+     *     )
+     * )
+     * 
      * @Get(RdvRestController::URI_RDV_COLLECTION)
      */
     public function searchAll()
@@ -52,6 +73,32 @@ class RdvRestController extends AbstractFOSRestController
     }
 
     /**
+     * @OA\Delete(
+     *     path="/rdvs/{rdvId}",
+     *     tags={"Rdv"},
+     *     summary="Deletes a rdv",
+     *     description="Deletes a single rdv",
+     *     operationId="deleteRdv",
+     *     @OA\Parameter(
+     *         name="rdvId",
+     *         in="path",
+     *         description="Rdv id to delete",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="integer",
+     *             format="int64"
+     *         ),
+     *     ),
+     *     @OA\Response(
+     *         response=204,
+     *         description="Rdv not found",
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Internal server error, please contact us.",
+     *     )
+     * )
+     * 
      * @Delete(RdvRestController::URI_RDV_INSTANCE)
      * @param [type] $id
      * @return void
@@ -66,6 +113,22 @@ class RdvRestController extends AbstractFOSRestController
     }
 
     /**
+     * @OA\Post(
+     *     path="/rdvs",
+     *     tags={"Rdv"},
+     *     summary="Creates a rdv",
+     *     description="Creates a rdv",
+     *     @OA\Response(
+     *         response=201,
+     *         description="Rdv created", 
+     *         @OA\JsonContent(ref="#/components/schemas/RdvDTO")   
+     *     ),
+     *      @OA\Response(
+     *         response=500,
+     *         description="Internal server Error. Please contact us",    
+     *     )
+     * )
+     * 
      * @Post(RdvRestController::URI_RDV_COLLECTION)
      * @ParamConverter("rdvDto", converter="fos_rest.request_body")
      * @return void
@@ -80,6 +143,32 @@ class RdvRestController extends AbstractFOSRestController
     }
 
     /**
+     * @OA\Put(
+     *     path="/rdvs/{rdvId}",
+     *     tags={"Rdv"},
+     *     summary="Update a rdv",
+     *     description="Updates a single rdv",
+     *     operationId="updateRdv",
+     *     @OA\Parameter(
+     *         name="rdvId",
+     *         in="path",
+     *         description="Rdv id to update",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="integer",
+     *             format="int64"
+     *         ),
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Rdv updated"
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Internal server error, please contact us."
+     *     )
+     * )
+     * 
      * @Put(RdvRestController::URI_RDV_INSTANCE)
      * @ParamConverter("rdvDto", converter="fos_rest.request_body")
      * @param RdvDTO $rdvDto
@@ -95,6 +184,37 @@ class RdvRestController extends AbstractFOSRestController
     }
 
     /**
+     * @OA\Get(
+     *     path="/rdvs/{rdvId}",
+     *     tags={"Rdv"},
+     *     summary="Find rdv by ID",
+     *     description="Returns a single rdv",
+     *     operationId="getRdvById",
+     *     @OA\Parameter(
+     *         name="rdvId",
+     *         in="path",
+     *         description="ID of rdv to return",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="integer",
+     *             format="int64"
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="successful operation",
+     *         @OA\JsonContent(ref="#/components/schemas/RdvDTO"),
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Rdv not found"
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Internal server error, please contact us."
+     *     ),
+     * )
+     * 
      * @Get(RdvRestController::URI_RDV_INSTANCE)
      * @return void
      */
