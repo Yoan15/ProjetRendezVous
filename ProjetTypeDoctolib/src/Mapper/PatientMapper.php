@@ -2,6 +2,7 @@
 
 namespace App\Mapper;
 
+use DateTime;
 use App\DTO\PatientDTO;
 use App\Entity\Patient;
 use App\Entity\Praticien;
@@ -14,6 +15,8 @@ class PatientMapper{
         $patient->setPraticien($praticien);
         $patient->setEmail($patientDto->getEmail());
         $patient->setPassword($patientDto->getPassword());
+        $patient->setBirthday(new DateTime($patientDto->getBirthday()));
+        $patient->setAdresse($patientDto->getAdresse());
         return $patient;
     }
 
@@ -26,6 +29,8 @@ class PatientMapper{
         $patientDto->setPraticien($patient->getPraticien()->getId());
         $patientDto->setEmail($patient->getEmail());
         $patientDto->setPassword($patient->getPassword());
+        $patientDto->setBirthday($patient->getBirthday()->format('Y-m-d'));
+        $patientDto->setAdresse($patient->getAdresse());
         return $patientDto;
     }
 }

@@ -49,6 +49,18 @@ class PatientDTO{
      * @var string
      */
     private $password;
+    /**
+    * @OA\Property(type="string")
+    *
+    * @var date
+    */
+    private $birthday;
+    /**
+     * @OA\Property(type="string")
+     *
+     * @var string
+     */
+    private $adresse;
 
     /**
      * Get the value of id
@@ -206,6 +218,46 @@ class PatientDTO{
     public function setPassword($password)
     {
         $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of birthday
+     */ 
+    public function getBirthday()
+    {
+        return $this->birthday;
+    }
+
+    /**
+     * Set the value of birthday
+     *
+     * @return  self
+     */ 
+    public function setBirthday($birthday)
+    {
+        $this->birthday = $birthday;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of adresse
+     */ 
+    public function getAdresse()
+    {
+        return $this->adresse;
+    }
+
+    /**
+     * Set the value of adresse
+     *
+     * @return  self
+     */ 
+    public function setAdresse($adresse)
+    {
+        $this->adresse = $adresse;
 
         return $this;
     }
