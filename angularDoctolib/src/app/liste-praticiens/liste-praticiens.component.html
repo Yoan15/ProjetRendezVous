@@ -1,0 +1,12 @@
+<div>
+  <h3>Liste de praticiens</h3>
+  <div class="col-12" *ngFor="let praticien of listePraticiens">
+    Id: {{praticien.id}} <br>
+    Nom: {{praticien.nom}} <br>
+    Prénom: {{praticien.prenom}} <br>
+    Spécialité: {{praticien.specialite}} <br>
+    Adresse: {{praticien.adresse}}<br>
+    <a [routerLink]="[praticien.id]" class="btn btn-primary">Détails</a>
+    <hr>
+  </div>
+</div>

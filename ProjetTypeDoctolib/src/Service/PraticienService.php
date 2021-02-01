@@ -67,6 +67,19 @@ class PraticienService{
             throw new PraticienServiceException("Un problème technique est survenu. Veuillez réessayer ultérieurement.");
         }
     }
+
+    public function searchBySpe(string $specialite){
+        try{
+            $praticiens = $this->repository->searchBySpe($specialite);
+            $praticienDTOs = [];
+            foreach($praticiens as $praticien){
+                $praticienDTOs[] = $this->praticienMapper->transformePraticienEntityToPraticienDto($praticien);
+            }
+            return $praticienDTOs;
+        }catch(DriverException $e){
+            throw new PraticienServiceException("Un problème technique est survenu. Veuillez réessayer ultérieurement.");
+        }
+    }
 }
 
 ?>

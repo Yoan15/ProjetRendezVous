@@ -1,0 +1,30 @@
+<div>
+  <h3>Inscription Praticien</h3>
+  <div class="col-6">
+    <form (ngSubmit)="inscription(subscriptionForm)" #subscriptionForm="ngForm">
+      Nom: <input type="text" name="nom" class="form-control" [(ngModel)]="nom" required #monNom="ngModel">
+      <p class="help-block texte-rouge" *ngIf="monNom.invalid && monNom.touched">Le nom doit être saisi.</p>
+      <hr>
+      Prenom: <input type="text" name="prenom" class="form-control" [(ngModel)]="prenom" required #monPrenom="ngModel">
+      <p class="help-block texte-rouge" *ngIf="monPrenom.invalid && monPrenom.touched">Le prénom doit être saisi.</p>
+      <hr>
+      Adresse: <input type="text" name="adresse" class="form-control" [(ngModel)]="adresse" required #monAdresse="ngModel">
+      <p class="help-block texte-rouge" *ngIf="monAdresse.invalid && monAdresse.touched">L'adresse doit être saisie.</p>
+      <hr>
+      Spécialité: <div class="input-group mb-3">
+        <select class="custom-select" name="specialite" id="inputGroupSelect02" [(ngModel)]="specialites" required #maSpecialite="ngModel">
+          <option *ngFor="let specialite of specialites" value="specialite.specialite.nom">{{specialite}}</option>
+        </select>
+        </div>
+      <hr>
+      Email: <input type="email" name="email" class="form-control" [(ngModel)]="email" required email #monEmail="ngModel">
+      <p class="help-block texte-rouge" *ngIf="monEmail.invalid && monEmail.touched">L'email doit être de la forme : xx(.xx)@xx.xx .</p>
+      <hr>
+      Mot de passe: <input type="password" name="password" class="form-control" [(ngModel)]="password" required #monPassword="ngModel">
+      <p class="help-block texte-rouge" *ngIf="monPassword.invalid && monPassword.touched">Le mot de passe doit être saisi.</p>
+      <hr>
+      <br>
+      <input type="submit" [disabled]="subscriptionForm.invalid" class="btn btn-primary" value="Valider">
+    </form>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<div>
+  <h3>Liste de patients</h3>
+  <div class="col-12" *ngFor="let patient of listePatients">
+    Id: {{patient.id}} <br>
+    Nom: {{patient.nom}} <br>
+    Prénom: {{patient.prenom}} <br>
+    Numéro de sécurité sociale: {{patient.numSecuSociale}} <br>
+    Date de naissance: {{patient.birthday}} <br>
+    Praticien: {{patient.praticien}} <br>
+    Adresse: {{patient.adresse}}<br>
+    <a [routerLink]="[patient.id]" class="btn btn-primary">Détails</a>
+    <hr>
+  </div>
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+</div>

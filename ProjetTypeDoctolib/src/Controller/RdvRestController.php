@@ -18,6 +18,9 @@ use FOS\RestBundle\Controller\Annotations\Delete;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use OpenApi\Annotations as OA;
+use FOS\RestBundle\Controller\Annotations\QueryParam;
+use FOS\RestBundle\Controller\Annotations\RequestParam;
 
 class RdvRestController extends AbstractFOSRestController
 {

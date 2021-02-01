@@ -18,6 +18,9 @@ use App\Service\Exception\PatientServiceException;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use OpenApi\Annotations as OA;
+use FOS\RestBundle\Controller\Annotations\QueryParam;
+use FOS\RestBundle\Controller\Annotations\RequestParam;
 
 
 /**
@@ -61,6 +64,18 @@ class PatientRestController extends AbstractFOSRestController
      *         response=500,
      *         description="Internal server Error. Please contact us",    
      *     )
+     * )
+     * 
+     * @QueryParam(
+     *   name="ordre",
+     *   key=null,
+     *   requirements="asc|desc",
+     *   incompatibles={},
+     *   default="asc",
+     *   description="Sort order (asc or desc)",
+     *   strict=false,
+     *   map=false,
+     *   nullable=true
      * )
      * 
      * @Get(PatientRestController::URI_PATIENT_COLLECTION)

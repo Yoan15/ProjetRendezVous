@@ -18,6 +18,10 @@ use App\Service\Exception\PraticienServiceException;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use OpenApi\Annotations as OA;
+use FOS\RestBundle\Controller\Annotations\QueryParam;
+use FOS\RestBundle\Controller\Annotations\RequestParam;
+use App\Repository\PraticienRepository;
 
 class PraticienRestController extends AbstractFOSRestController
 {
@@ -55,11 +59,20 @@ class PraticienRestController extends AbstractFOSRestController
      * )
      * 
      * @Get(PraticienRestController::URI_PRATICIEN_COLLECTION)
+     * @QueryParam(
+     * name="specialite",
+     * key="specialite",
+     * requirements="\w+",
+     * default="null")
      */
-    public function searchAll()
+    public function searchAll(string $specialite)
     {
         try{
-            $praticiens = $this->praticienService->searchAll();
+            if ($specialite != "null") {
+                $praticiens = $this->praticienService->searchBySpe($specialite);
+            }else{
+                $praticiens = $this->praticienService->searchAll();
+            }
         }catch(PraticienServiceException $e){
             return View::create($e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR, ["Content-type" => "application/json"]);
         }

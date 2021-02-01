@@ -18,6 +18,9 @@ use App\Service\Exception\SpecialiteServiceException;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use OpenApi\Annotations as OA;
+use FOS\RestBundle\Controller\Annotations\QueryParam;
+use FOS\RestBundle\Controller\Annotations\RequestParam;
 
 class SpecialiteRestController extends AbstractFOSRestController
 {
@@ -55,6 +58,7 @@ class SpecialiteRestController extends AbstractFOSRestController
      * )
      * 
      * @Get(SpecialiteRestController::URI_SPECIALITE_COLLECTION)
+     * @QueryParam(name="sort", requirements="(asc|desc)", nullable=true, description="Ordre de tri (basé sur le nom)")
      */
     public function searchAll()
     {

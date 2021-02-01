@@ -19,6 +19,15 @@ class PraticienRepository extends ServiceEntityRepository
         parent::__construct($registry, Praticien::class);
     }
 
+    public function searchBySpe($value){
+        return $this->createQueryBuilder('praticien')
+            ->select('praticien')
+            ->where('praticien.specialite = :value')
+            ->setParameter('value', $value)
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return Praticien[] Returns an array of Praticien objects
     //  */
